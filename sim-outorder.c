@@ -4605,7 +4605,7 @@ sim_main(void)
         counter_t diff = sim_num_insn - old_instruction_count;
         old_instruction_count = sim_num_insn;
         old_cycle_count = sim_cycle;
-        printf("IPC in %lld-th 5 million instructions: %12.4f\n", hit_times++, (float)5000000 / (float)diff);
+        printf("IPC in %lld-th 5 million cycles: %12.4f\n", hit_times++, (float)diff / (float)5000000);
       }
 
       /* finish early? */
