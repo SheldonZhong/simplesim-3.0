@@ -4420,6 +4420,7 @@ simoo_mstate_obj(FILE *stream,			/* output stream */
   return NULL;
 }
 
+
 static counter_t old_instruction_count = 0;
 static tick_t old_cycle_count = 0;
 static counter_t hit_times = 0;
