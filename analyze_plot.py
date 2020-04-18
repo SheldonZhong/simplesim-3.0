@@ -13,7 +13,7 @@ with open("./equake.stdout", "r") as output:
         x.append(int(line_result.group(1)))
         y.append(float(line_result.group(2)))
 
-plt.plot(x, y)
+plt.plot(x, y, 'o')
 plt.xlabel('i-th 5 million cycles')
 plt.ylabel('IPC value')
 plt.title('Variation of IPC value with window size 5 million cycles')
