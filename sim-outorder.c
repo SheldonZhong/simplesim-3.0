@@ -4420,7 +4420,9 @@ simoo_mstate_obj(FILE *stream,			/* output stream */
   return NULL;
 }
 
-
+static counter_t old_instruction_count = 0;
+static tick_t old_cycle_count = 0;
+static counter_t hit_times = 0;
 /* start simulation, program loaded, processor precise state initialized */
 void
 sim_main(void)
@@ -4598,6 +4600,13 @@ sim_main(void)
 
       /* go to next cycle */
       sim_cycle++;
+
+      if (sim_cycle > old_cycle_count + 5000000) {
+        counter_t diff = sim_num_insn - old_instruction_count;
+        old_instruction_count = sim_num_insn;
+        old_cycle_count = sim_cycle;
+        printf("IPC in %lld-th 5 million instructions: %12.4f\n", hit_times++, (float)5000000 / (float)diff);
+      }
 
       /* finish early? */
       if (max_insts && sim_num_insn >= max_insts)
